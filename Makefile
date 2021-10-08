@@ -6,7 +6,7 @@
 #    By: slathouw <slathouw@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 09:55:38 by slathouw          #+#    #+#              #
-#    Updated: 2021/10/08 12:18:33 by slathouw         ###   ########.fr        #
+#    Updated: 2021/10/08 12:23:04 by slathouw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,23 +34,23 @@ BONUSOBJS = ${addprefix $(OBJDIR)/, $(BONUSSOURCES:.c=.o)}
 
 all : 		${NAME}
 
-$(NAME) :	$(OBJS)
+simple :	$(OBJS)
 	@make -C $(LIBFT)
 	@cp libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "libftprintf.a created!"
+	@echo "simple libftprintf.a created!"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@mkdir -p obj
 	@${CC} ${CFLAGS} -I ${INCLUDES} -c $< -o $@
 
-bonus :	$(BONUSOBJS)
+$(NAME) :	$(BONUSOBJS)
 	@make -C $(LIBFT)
 	@cp libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $(BONUSOBJS)
 	@ranlib $(NAME)
-	@echo "Bonus libftprintf.a created!"
+	@echo "Libftprintf.a created!"
 
 
 $(OBJDIR)/%.o: $(BONUSSRCDIR)/%.c
@@ -71,4 +71,4 @@ fclean: clean
 
 re :		fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re simple
