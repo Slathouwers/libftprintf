@@ -6,7 +6,7 @@
 #    By: slathouw <slathouw@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 09:55:38 by slathouw          #+#    #+#              #
-#    Updated: 2021/09/23 11:20:34 by slathouw         ###   ########.fr        #
+#    Updated: 2021/10/08 12:18:33 by slathouw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,34 +35,39 @@ BONUSOBJS = ${addprefix $(OBJDIR)/, $(BONUSSOURCES:.c=.o)}
 all : 		${NAME}
 
 $(NAME) :	$(OBJS)
-	make -C $(LIBFT)
-	cp libft/libft.a ./$(NAME)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	@make -C $(LIBFT)
+	@cp libft/libft.a ./$(NAME)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
+	@echo "libftprintf.a created!"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	mkdir -p obj
-	${CC} ${CFLAGS} -I ${INCLUDES} -c $< -o $@
+	@mkdir -p obj
+	@${CC} ${CFLAGS} -I ${INCLUDES} -c $< -o $@
 
 bonus :	$(BONUSOBJS)
-	make -C $(LIBFT)
-	cp libft/libft.a ./$(NAME)
-	ar rc $(NAME) $(BONUSOBJS)
-	ranlib $(NAME)
+	@make -C $(LIBFT)
+	@cp libft/libft.a ./$(NAME)
+	@ar rc $(NAME) $(BONUSOBJS)
+	@ranlib $(NAME)
+	@echo "Bonus libftprintf.a created!"
+
 
 $(OBJDIR)/%.o: $(BONUSSRCDIR)/%.c
-	mkdir -p obj
-	${CC} ${CFLAGS} -I ${INCLUDES} -c $< -o $@
+	@mkdir -p obj
+	@${CC} ${CFLAGS} -I ${INCLUDES} -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
-	rm -f $(BONUSOBJS)
-	rm -rf $(OBJDIR)
-	make clean -C $(LIBFT)
+	@rm -f $(OBJS)
+	@rm -f $(BONUSOBJS)
+	@rm -rf $(OBJDIR)
+	@make clean -C $(LIBFT)
+	@echo "libftprintf objects removed..."
 
 fclean: clean
-	rm -f $(NAME)
-	make fclean -C $(LIBFT)
+	@rm -f $(NAME)
+	@make fclean -C $(LIBFT)
+	@echo "libftprintf.a removed..."
 
 re :		fclean all
 

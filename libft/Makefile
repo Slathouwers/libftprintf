@@ -6,7 +6,7 @@
 #    By: slathouw <slathouw@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/02 11:59:30 by slathouw          #+#    #+#              #
-#    Updated: 2021/09/27 13:41:34 by slathouw         ###   ########.fr        #
+#    Updated: 2021/10/08 12:19:37 by slathouw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,18 +28,23 @@ CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
 .c.o:
-			${CC} ${CFLAGS} -I . -c $< -o ${<:.c=.o}
+			@${CC} ${CFLAGS} -I . -c $< -o ${<:.c=.o}
+			@printf "\rCompiling libft objects..."
 
 all : 		${NAME}
 
 ${NAME} :	${OBJS}
-			ar rc ${NAME} ${OBJS}
-			ranlib ${NAME}
+			@ar rc ${NAME} ${OBJS}
+			@ranlib ${NAME}
+			@echo "\nlibft.a created!"
 clean :
-			rm -f ${OBJS}
+			@rm -f ${OBJS}
+			@echo "libft objects removed..."
+
 
 fclean :	clean
-			rm -f ${NAME}
+			@rm -f ${NAME}
+			@echo "libft.a removed..."
 
 re :		fclean all
 
