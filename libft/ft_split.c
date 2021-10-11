@@ -56,6 +56,8 @@ static char	*get_word(char const *str, char sep)
 
 void	ft_free_split(char **arr)
 {
+	char **head;
+	head = arr;
 	if (arr)
 	{
 		if (*arr)
@@ -63,7 +65,7 @@ void	ft_free_split(char **arr)
 			while (*arr)
 				free(*arr++);
 		}
-		free(arr);
+		free(head);
 	}
 }
 
