@@ -6,7 +6,7 @@
 /*   By: slathouw <slathouw@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 11:23:47 by slathouw          #+#    #+#             */
-/*   Updated: 2021/09/27 13:41:19 by slathouw         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:02:35 by slathouw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
-	  /////////////////
-	 //   Part - 1  //
-	/////////////////
+		/////////////////
+		//   Part - 1  //
+		/////////////////
 /* ----------- TEST MALLOC FAIL ------------- */
 /* #include <stdio.h>
 static int	g_fail_after = 1;
@@ -71,9 +71,9 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	ft_strrev(char *str);
 long	ft_max(long a, long b);
 
-	  /////////////////
-	 //   Part - 2  //
-	/////////////////
+		/////////////////
+		//   Part - 2  //
+		/////////////////
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -93,9 +93,9 @@ void	ft_putstr_fd(char const *s, int fd);
 void	ft_putstrn_fd(char const *s, size_t n, int fd);
 size_t	ft_putstrl_fd(char const *s, size_t n, int fd);
 
-	  /////////////////
-	 //   Bonus     //
-	/////////////////
+		/////////////////
+		//   Bonus     //
+		/////////////////
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
